@@ -11,7 +11,7 @@ pipeline {
   stages {
     stage('Status') {
       steps {
-        sh 'liquibase status --url="$env:TEST_URL" --changeLogFile=$env:changeLogFile. --Driver=org.postgresql.Driver --username=postgres --password=fellaini'
+        sh 'liquibase status --url="$env:TEST_URL" --changeLogFile=$env:changeLogFile --Driver=org.postgresql.Driver --username=postgres --password=fellaini'
         sh 'liquibase status --url="$env:QA_URL" --changeLogFile=$env:changeLogFile --Driver=org.postgresql.Driver --username=postgres --password=fellaini'
       }
     }
