@@ -19,6 +19,7 @@ pipeline {
     }
     stage('test') {
        steps {
+        def mvnHome = tool 'myMaven'
         sh 'mvn clean package -Dmaven.test.skip=true'
         sh 'mvn liquibase:update --url=$env:TEST_URL --changeLogFile=$env:changeLogFile --username=postgres --password=fellaini'
         sh 'mvn liquibase:status -PTEST'
