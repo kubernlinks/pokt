@@ -1,6 +1,5 @@
 node {
-  tools {
-      maven 'myMaven'
+  mavenHome = tool 'myMaven'
    }
    stage('init'){
    }
