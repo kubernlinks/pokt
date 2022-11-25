@@ -1,4 +1,7 @@
 node {
+  tools {
+      maven. 'myMaven'
+   }
    stage('init'){
    }
    stage('build'){
