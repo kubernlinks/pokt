@@ -1,4 +1,5 @@
-node {
+pipeline
+  agent any 
   mavenHome = tool 'myMaven'
    }
    stage('init'){
