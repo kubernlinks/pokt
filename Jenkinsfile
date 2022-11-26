@@ -18,8 +18,8 @@ pipeline {
       }
     }
     //stage('maven') {
-      steps {
-        sh 'mvn version'
+     // steps {
+       // sh 'mvn version'
       }
     }
     stage('test') {
