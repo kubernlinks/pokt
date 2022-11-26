@@ -17,7 +17,7 @@ pipeline {
         sh 'liquibase status --url="jdbc:postgresql://database-1.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres" --changeLogFile=changelog_version.xml --username=postgres --password=fellaini'
       }
     }
-    stage('maven') {
+    //stage('maven') {
       steps {
         sh 'mvn version'
       }
