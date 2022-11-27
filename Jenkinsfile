@@ -3,7 +3,7 @@ pipeline {
     docker { image 'liquibase/liquibase:4.17' }
   }
   environment {
-    def mavenHome = tool 'myMaven'
+    def mavenHome = tool 'mvn'
   }
   stages {
     stage('Status') {
