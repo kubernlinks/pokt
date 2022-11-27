@@ -4,11 +4,6 @@ pipeline {
   }
   environment {
     def mavenHome = tool 'myMaven'
-    PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
-    TEST_URL='jdbc:postgresql://database-1.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres'
-    QA_URL='jdbc:postgresql://prod.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres'
-    changeLogFile='changelog_version.xml'
-    driver='org.postgresql.Driver'
   }
   stages {
     stage('Status') {
