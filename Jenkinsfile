@@ -1,9 +1,4 @@
 pipeline {
-  environment {
-    mavenHome = tool 'myMaven'
-    dockerHome = tool 'myDocker'
-    PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
-  }
   agent { docker { image 'liquibase/liquibase:4.17' } }
   stages {
     stage('Status') {
