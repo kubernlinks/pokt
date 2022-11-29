@@ -10,7 +10,8 @@ pipeline {
     stage('initmvn') {
       steps {
         sh 'pwd'
-        sh 'mvn --version'
+        sh """#!/bin/bash
+        mvn --version"""
       }
     }
     stage('test') {
