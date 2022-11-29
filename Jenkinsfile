@@ -1,9 +1,9 @@
 pipeline {
-  agent { docker { image 'liquibase/liquibase:4.17' } }
-        { docker { image 'maven:3.6.3' } }
+  agent any
   stages {
     stage('Status') {
       steps {
+        agent { docker { image 'liquibase/liquibase:4.17' } }
         sh 'liquibase status --url="jdbc:postgresql://database-1.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres" --changeLogFile=changelog_version.xml --username=postgres --password=fellaini'
         sh 'liquibase status --url="jdbc:postgresql://database-1.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres" --changeLogFile=changelog_version.xml --username=postgres --password=fellaini'
       }
