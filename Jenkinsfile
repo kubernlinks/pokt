@@ -1,7 +1,6 @@
 pipeline {
-  agent {
-    docker { image 'liquibase/liquibase:4.17' }
-  }
+    agent { docker { image 'liquibase/liquibase:4.17' } }
+    agent { docker { image 'maven:3.6.3' } }  
   stages {
     stage('Status') {
       steps {
