@@ -1,9 +1,5 @@
 pipeline {
   agent { docker { image 'liquibase/liquibase:4.17' } }
-  tools {
-    maven 'MAVEN_HOME'
-    jdk 'JAVA_HOME'
-  }
   stages {
     stage('Status') {
       steps {
