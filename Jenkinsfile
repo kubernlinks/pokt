@@ -8,7 +8,6 @@ pipeline {
       }
     }
     stage('maven') {
-      agent { docker { image 'maven:3.8.6' } }  
       steps {
         sh 'mvn -version'
       }
