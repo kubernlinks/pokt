@@ -10,9 +10,7 @@ pipeline {
     }
     stage('initmvn') {
       steps {
-        sh '''
-              "mvn --version"
-         '''
+        sh 'mvn --version'
       }
     }
     stage('test') {
