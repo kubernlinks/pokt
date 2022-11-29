@@ -2,8 +2,8 @@ pipeline {
   agent any
   stages {
     stage('Status') {
+      agent { docker { image 'liquibase/liquibase:4.17' } }
       steps {
-        agent { docker { image 'liquibase/liquibase:4.17' } }
         sh 'liquibase status --url="jdbc:postgresql://database-1.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres" --changeLogFile=changelog_version.xml --username=postgres --password=fellaini'
         sh 'liquibase status --url="jdbc:postgresql://database-1.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres" --changeLogFile=changelog_version.xml --username=postgres --password=fellaini'
       }
