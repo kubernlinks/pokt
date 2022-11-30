@@ -16,7 +16,7 @@ pipeline {
     stage('test') {
        steps {
         sh 'mvn clean package -Dmaven.test.skip=true'
-        sh 'mvn liquibase:update --TEST.liquibase.properties changelog_version.xml'
+        sh 'mvn liquibase:update'
         sh 'mvn liquibase:status -PTEST'
         sh 'mvn spring-boot:run'
       }
