@@ -2,10 +2,10 @@ pipeline {
   agent any
   stages {
     stage('Fetch Code') {
-                steps {
-                    git branch: 'dev', url: 'https://github.com/kubernlinks/pokt.git'
-                }
-            }
+          steps {
+              git branch: 'dev', url: 'https://github.com/kubernlinks/pokt.git'
+          }
+    }
     stage('dev status check') {
       agent { docker { image 'liquibase/liquibase:4.17' } }
       steps {
