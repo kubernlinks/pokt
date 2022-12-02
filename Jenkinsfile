@@ -34,7 +34,7 @@ pipeline {
         }
     stage('Get Approval')  {
         options {
-            timeout(time:  1, unit: 'MINUTES')
+            timeout(time:  1, unit: 'DAYS')
         }
         steps {
             input "please approve to  proceed to QA"
@@ -55,9 +55,9 @@ pipeline {
         sh 'mvn liquibase:status -PQA'
       }
     }
-    stage('Get Approval')  {
+    stage('Get Approval 2')  {
        options {
-          timeout(time:  1, unit: 'days')
+          timeout(time:  1, unit: 'DAYS')
        }
        steps {
            input "please approve to  proceed to QA"
