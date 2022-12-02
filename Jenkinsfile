@@ -44,7 +44,7 @@ pipeline {
     stage('QA status check') {
         agent { docker { image 'liquibase/liquibase:4.17' } }
         steps {
-           checkout git branch: 'QA', url: 'git clone https://kubernlinks@bitbucket.org/kubernlinks/pokt.git'
+           git branch: 'QA', url: 'git clone https://kubernlinks@bitbucket.org/kubernlinks/pokt.git'
            sh 'liquibase status --url="jdbc:postgresql://database-2.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres" --changeLogFile=changelog_version.xml --username=postgres --password=fellaini'
        }
     }
