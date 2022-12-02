@@ -13,7 +13,7 @@ pipeline {
     }
     stage('deploy') {
        steps {
-        git branch: 'dev', url: 'git clone https://kubernlinks@bitbucket.org/kubernlinks/pokt.git'
+        git branch: 'dev', url: 'https://github.com/kubernlinks/pokt.git'
         sh 'mvn clean package -Dmaven.test.skip=true'
         sh 'mvn liquibase:update'
         sh 'mvn liquibase:status -PDEPLOY'
