@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Fetch Code') {
                 steps {
-                    git branch: 'dev', url: 'git clone https://github.com/kubernlinks/pokt.git'
+                    git branch: 'dev', url: 'https://github.com/kubernlinks/pokt.git'
                 }
             }
     stage('dev status check') {
