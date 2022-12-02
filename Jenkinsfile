@@ -50,7 +50,7 @@ pipeline {
     stage('QA deploy') {
       steps {
         sh 'mvn clean package'
-        sh 'mvn liquibase:update'
+        sh 'liquibase update --QA.liquibase.properties'
         sh 'mvn liquibase:status -PQA'
       }
     }
