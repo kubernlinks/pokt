@@ -45,12 +45,12 @@ pipeline {
         steps {
            git branch: 'QA', url: 'https://github.com/kubernlinks/pokt.git'
            sh 'liquibase status --url="jdbc:postgresql://database-2.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres" --changeLogFile=changelog_version.xml --username=postgres --password=fellaini'
+           sh 'liquibase update --QA.liquibase.properties'
        }
     }
     stage('QA deploy') {
       steps {
         sh 'mvn clean package'
-        sh 'liquibase update --QA.liquibase.properties'
         sh 'mvn liquibase:status -PQA'
       }
     }
