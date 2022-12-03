@@ -16,6 +16,7 @@ pipeline {
     stage('dev status check & update') {
       agent { docker { image 'liquibase/liquibase:4.17' } }
       steps {
+        git branch: 'dev', url: 'https://github.com/kubernlinks/pokt.git' 
         sh 'liquibase status --url=$dev_db --changeLogFile=dev_wrapper.xml --username=${devdb_cr_USR} --password=${devdb_cr_PSW}'
         //sh 'liquibase update --url=$dev_db --changeLogFile=dev_wrapper.xml --username=$devdb_cr_USR --password=$devdb_cr_PSW'   
       }
