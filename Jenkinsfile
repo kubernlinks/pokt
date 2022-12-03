@@ -1,9 +1,9 @@
 pipeline {
   agent any
   environment {
-    dev_db = credentials('dev_db')
-    qa_db = credentials('qa_db')
-    prod_db = credentials('prod_db')
+    dev_db=credentials('dev_db')
+    qa_db=credentials('qa_db')
+    prod_db=credentials('prod_db')
   }
   stages {
     stage('Fetch Code') {
