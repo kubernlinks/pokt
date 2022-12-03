@@ -13,7 +13,7 @@ pipeline {
     stage('dev status check & update') {
       agent { docker { image 'liquibase/liquibase:4.17' } }
       steps {
-        sh 'liquibase status --url="jdbc:postgresql://database-1.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres" --changeLogFile=changelog_version.xml --username=$dev_db --password=$dev_db'
+        sh 'liquibase status --url="jdbc:postgresql://database-1.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres" --changeLogFile=changelog_version.xml --username=$dev_db_USR --password=$dev_db_PSW'
         //sh 'liquibase update --url="jdbc:postgresql://database-1.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres" --changeLogFile=changelog_version.xml --username=postgres --password=fellaini'   
       }
     }
