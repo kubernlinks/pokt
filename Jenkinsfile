@@ -43,7 +43,7 @@ pipeline {
           timeout(time:  1, unit: 'DAYS')
        }
        steps {
-           input "please approve to  proceed to QA"
+           input "please approve to  proceed to PROD"
       }
     }
     stage('PROD status check & update') {
