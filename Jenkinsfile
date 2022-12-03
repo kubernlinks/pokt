@@ -42,12 +42,12 @@ pipeline {
            input "please approve to  proceed to QA"
       }
     }
-    stage('PROD status check &. update') {
+    stage('PROD status check & update') {
             agent { docker { image 'liquibase/liquibase:4.17' } }
             steps {
                git branch: 'PROD', url: 'https://github.com/kubernlinks/pokt.git'
                sh 'liquibase status --url="jdbc:postgresql://prod.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres" --changeLogFile=changelog_version.xml --username=prod_db_USR --password=prod_db_PSW'
-               sh 'liquibase update --url="jdbc:postgresql://prod.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres" --changeLogFile=prod_wrapper.xml --username=prod_db_USR --password=prod_db_PSW'
+               sh 'liquibase update --url="jdbc:postgresql://prod.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres" --changeLogFile=prod_wrapper.xml --username=$prod_db_USR --password=$prod_db_PSW'
             }
         }
   }
