@@ -1,5 +1,10 @@
 pipeline {
   agent any
+  environment {
+    dev_db = credentials('dev_db')
+    qa_db = credentials('qa_db')
+    prod_db = credentials('prod_db')
+  }
   stages {
     stage('Fetch Code') {
                 steps {
@@ -8,7 +13,7 @@ pipeline {
     stage('dev status check & update') {
       agent { docker { image 'liquibase/liquibase:4.17' } }
       steps {
-        sh 'liquibase status --url="jdbc:postgresql://database-1.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres" --changeLogFile=changelog_version.xml --username=postgres --password=fellaini'
+        sh 'liquibase status --url="jdbc:postgresql://database-1.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres" --changeLogFile=changelog_version.xml --username=$dev_db --password=$dev_db'
         //sh 'liquibase update --url="jdbc:postgresql://database-1.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres" --changeLogFile=changelog_version.xml --username=postgres --password=fellaini'   
       }
     }
