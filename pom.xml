@@ -13,15 +13,21 @@
 
     <profiles>
         <profile>
-            <id>TEST</id>
+            <id>DEV</id>
             <properties>
-                <liquibase.propertyFile>TEST.liquibase.properties</liquibase.propertyFile>
+                <liquibase.propertyFile>DEV.liquibase.properties</liquibase.propertyFile>
             </properties>
         </profile>
         <profile>
             <id>QA</id>
             <properties>
                 <liquibase.propertyFile>QA.liquibase.properties</liquibase.propertyFile>
+            </properties>
+        </profile>
+	<profile>
+            <id>PROD</id>
+            <properties>
+                <liquibase.propertyFile>PROD.liquibase.properties</liquibase.propertyFile>
             </properties>
         </profile>
     </profiles>
