@@ -35,7 +35,7 @@ pipeline {
         steps {
            git url: 'https://github.com/kubernlinks/pokt.git', branch: 'QA'
            sh 'liquibase status --url=$qa_db --changeLogFile=QA_wrapper.xml --username=$qadb_cr_USR --password=$qadb_cr_PSW'
-          steps {
+    stage ('QA update') {
            sh ' mvn liquibase:update --url=$qa_db --changeLogFile=QA_wrapper.xml --username=$qadb_cr_USR --password=$qadb_cr_PSW'}
        }
     }
