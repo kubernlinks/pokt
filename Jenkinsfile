@@ -41,7 +41,7 @@ pipeline {
     stage('QA update') {
         steps {
            git url: 'https://github.com/kubernlinks/pokt.git', branch: 'QA'
-           sh ' mvn liquibase:update -PQA'
+           sh ' mvn liquibase:status -PQA'
            }
        }
     
