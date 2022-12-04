@@ -22,7 +22,7 @@ pipeline {
     }
     stage('dev deploy') {
         steps {
-           git url: 'https://github.com/kubernlinks/pokt.git', branch: 'DEV'
+           git url: 'https://github.com/kubernlinks/pokt.git', branch: 'dev'
            sh 'mvn liquibase:status -PDEV'
            sh 'mvn liquibase:update -PDEV -D1'
            }
