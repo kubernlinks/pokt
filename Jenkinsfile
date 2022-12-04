@@ -36,7 +36,6 @@ pipeline {
         }
      }
     stage('email') {
-      def emailtext() { 
           emailext (
        subject: "STARTED: Job 'poktpool'",
        body: """<p>STARTED: Job 'pokt':</p>
@@ -44,7 +43,7 @@ pipeline {
        recipientProviders: [[$class: 'DevelopersRecipientProvider']]
          )
       }        
-    }
+    
     stage('QA status check') {
         agent { docker { image 'liquibase/liquibase:4.17' } }
         steps {
