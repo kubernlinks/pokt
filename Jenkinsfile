@@ -35,14 +35,6 @@ pipeline {
             input "please approve to  proceed to QA"
         }
      }
-    stage('email') {
-          emailext (
-       subject: "STARTED: Job 'poktpool'",
-       body: """<p>STARTED: Job 'pokt':</p>
-        <p>Check console output at &QUOT;<a href='pokt</a>&QUOT;</p>""",
-       recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-         )
-      }        
     
     stage('QA status check') {
         agent { docker { image 'liquibase/liquibase:4.17' } }
