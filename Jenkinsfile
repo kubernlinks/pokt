@@ -30,12 +30,12 @@ pipeline {
         }
      }
 
-    stage('QA status check & update') {
+    stage('QA status check') {
         agent { docker { image 'liquibase/liquibase:4.17' } }
         steps {
            git url: 'https://github.com/kubernlinks/pokt.git', branch: 'QA'
            sh 'liquibase status --url=$qa_db --changeLogFile=QA_wrapper.xml --username=$qadb_cr_USR --password=$qadb_cr_PSW'
-    stage ('QA update') {
+    stage('QA update') {
            sh ' mvn liquibase:update --url=$qa_db --changeLogFile=QA_wrapper.xml --username=$qadb_cr_USR --password=$qadb_cr_PSW'}
        }
     }
