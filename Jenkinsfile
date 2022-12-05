@@ -70,7 +70,7 @@ pipeline {
     stage('PROD deploy') {
         steps {
            git url: 'https://github.com/kubernlinks/pokt.git', branch: 'PROD'
-           sh 'mvn liquibase:status -PROD'
+           sh 'mvn liquibase:status -PPROD'
            sh 'mvn liquibase:update -PPROD -D1'
            }
        }
