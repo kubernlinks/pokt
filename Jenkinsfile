@@ -4,9 +4,9 @@ pipeline {
     devdb_cr=credentials('dev_db')
     qadb_cr=credentials('qa_db')
     proddb_cr=credentials('prod_db')
-    dev_db="jdbc:postgresql://database-1.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres"
-    qa_db="jdbc:postgresql://database-2.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres"
-    prod_db="jdbc:postgresql://prod.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres"
+    dev_db="jdbc:postgresql://psql.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres"
+    qa_db="jdbc:postgresql://psql.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres"
+    prod_db="jdbc:postgresql://psql.cpuc6bgspxr2.eu-central-1.rds.amazonaws.com:5432/postgres"
   }
   stages {
     stage('Fetch Code') {
