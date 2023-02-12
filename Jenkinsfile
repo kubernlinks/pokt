@@ -11,18 +11,18 @@ pipeline {
   stages {
     stage('Fetch Code') {
                 steps {
-                    git branch: 'dev', url: 'https://github.com/kubernlinks/pokt.git'                }
+                    git branch: 'dev', url: 'https://github.com/kubernlinks/poole.git'                }
             }
     stage('dev status check') {
       agent { docker { image 'liquibase/liquibase:4.17' } }
       steps {
-        git branch: 'dev', url: 'https://github.com/kubernlinks/pokt.git' 
+        git branch: 'dev', url: 'https://github.com/kubernlinks/poole.git' 
         sh 'liquibase status --url=$dev_db --changeLogFile=dev_wrapper.xml --username=${devdb_cr_USR} --password=${devdb_cr_PSW}'   
       }
     }
     stage('dev deploy') {
         steps {
-           git url: 'https://github.com/kubernlinks/pokt.git', branch: 'dev'
+           git url: 'https://github.com/kubernlinks/poole.git', branch: 'dev'
            sh 'mvn liquibase:status -PDEV'
            //sh 'mvn liquibase:update -PDEV -D1'
            }
@@ -39,14 +39,14 @@ pipeline {
     stage('QA status check') {
         agent { docker { image 'liquibase/liquibase:4.17' } }
         steps {
-           git url: 'https://github.com/kubernlinks/pokt.git', branch: 'QA'
+           git url: 'https://github.com/kubernlinks/poole.git', branch: 'QA'
            sh 'liquibase status --url=$qa_db --changeLogFile=QA_wrapper.xml --username=$qadb_cr_USR --password=$qadb_cr_PSW'
         }
      }
    
     stage('QA deploy') {
         steps {
-           git url: 'https://github.com/kubernlinks/pokt.git', branch: 'QA'
+           git url: 'https://github.com/kubernlinks/poole.git', branch: 'QA'
            sh 'mvn liquibase:status -PQA'
            sh 'mvn liquibase:update -PQA -D1'
            }
@@ -63,13 +63,13 @@ pipeline {
     stage('PROD status check') {
             agent { docker { image 'liquibase/liquibase:4.17' } }
             steps {
-               git branch: 'PROD', url: 'https://github.com/kubernlinks/pokt.git'
+               git branch: 'PROD', url: 'https://github.com/kubernlinks/poole.git'
                sh 'liquibase status --url=$prod_db --changeLogFile=prod_wrapper.xml --username=$proddb_cr_USR --password=$proddb_cr_PSW'
             }
         }
     stage('PROD deploy') {
         steps {
-           git url: 'https://github.com/kubernlinks/pokt.git', branch: 'PROD'
+           git url: 'https://github.com/kubernlinks/poole.git', branch: 'PROD'
            sh 'mvn liquibase:status -PPROD'
            sh 'mvn liquibase:update -PPROD -D1'
            }
